@@ -38,6 +38,7 @@ function MkRemake(RemakeName,GnrtLine,Flname,Lng){
 		print("echo endlocal>>"RemakeName)
 		print("echo call ..\\..\\..\\tools.bat cp " Lng " " Flname ">>"RemakeName) 
 }
+						###MkClean
 function MkClean(Fln,CN){
                 print("echo @echo off>"CN)
 		print("echo del "Fln".ps>>"CN);
@@ -63,14 +64,26 @@ function MkClean(Fln,CN){
                	MkDirs(TmpA[2],TmpA[3],TmpA[4]);
                 MkRemake(RemakeName , "!! " ZdList , Flname , Lengvige );
                 MkClean(Flname,"clean.bat");
-
-
                 print("cd ..\\..\\..");
 
 
 
         }
 }
+                				###mkcard
+(ToDo == "mkcard") {
+	 #print(":: " $0)
+	 Leng=$1;
+	 DirNm=$2;
+	 FilNm=$3;  Tmp=$3;
+         sub(/^.*\\/,"",Tmp); sub(/\..*$/,"",Tmp); 
+         MkDirs(Leng,DirNm,Tmp);
+         MkRemake("remake.bat","!!!"FilNm"!!!" ,Tmp,Leng)
+         MkClean(Tmp,"clean.bat");
+         print("cd ..\\..\\..");
+} 
+
+
 ###
 
 
