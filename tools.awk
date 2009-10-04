@@ -26,7 +26,6 @@ function MkDirs(d1,d2,d3,D,i){
                 print("if not exist " D[i] " mkdir " D[i]);
                 print("cd " D[i]);
 	}
-
 }
 
 						###MkRemake
@@ -37,7 +36,14 @@ function MkRemake(RemakeName,GnrtLine,Flname,Lng){
 		print("echo call gnrt " GnrtLine " >>"RemakeName)
 		print("echo call " Lng "-trnsl.bat>>"RemakeName)
 		print("echo endlocal>>"RemakeName)
-		print("echo call ..\\..\\..\\" Lng "-cp " Flname ">>"RemakeName) 
+		print("echo call ..\\..\\..\\tools.bat cp " Lng " " Flname ">>"RemakeName) 
+}
+function MkClean(Fln,CN){
+                print("echo @echo off>"CN)
+		print("echo del "Fln".ps>>"CN);
+		print("echo del "Fln".pdf>>"CN);
+		print("echo del "Fln".dvi>>"CN);
+		print("echo del "Fln".html>>"CN);
 }
 
 						###mkalldir
@@ -52,10 +58,11 @@ function MkRemake(RemakeName,GnrtLine,Flname,Lng){
         	Lengvige=StripLine(TmpA[2]);
         	Flname=StripLine(TmpA[5])
         	ZdList=StripLine(TmpA[6])
-                RemakeName="remake" KolVo ".ba"
+                RemakeName="remake" KolVo ".bat"
 
                	MkDirs(TmpA[2],TmpA[3],TmpA[4]);
                 MkRemake(RemakeName , "!! " ZdList , Flname , Lengvige );
+                MkClean(Flname,"clean.bat");
 
 
                 print("cd ..\\..\\..");
