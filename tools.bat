@@ -2,6 +2,7 @@
 
 if -%1- == -- goto err
 
+:: mkalldir ru 25
 if -%1- == -mkalldir- goto mkalldir
 
 goto err
@@ -9,7 +10,8 @@ goto err
 :mkalldir
 shift
 if not exist %1-ex.txt goto err
-gawk -f tools.awk -v ToDo=mkdir  %1-ex.txt >tmp-mkdir.bat
+if -%2- == -- goto err
+gawk -f tools.awk -v ToDo=mkalldir -v KolVo=%2 %1-ex.txt >tmp-mkdir.bat
 ::call tmp-mkdir.bat
 ::del tmp-mkdir.bat
 

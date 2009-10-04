@@ -1,4 +1,9 @@
 
+## Prefix="###"
+## Suffix=""
+## Enc="cp866"
+## End
+
 
 BEGIN {
 	Kav="\"";
@@ -11,32 +16,48 @@ function StripLine(L) {
 	return(L);
 }
 
-#(ToDo == "mkdir")
-{
+						###MkDirs
+function MkDirs(D,i){
+	for(i=1 ; i<=3 ; i++){
+                print("if not exist " D[i] " mkdir " D[i]);
+                print("cd " D[i]);
+	}
+
+}
+
+						###MkRemake
+function MkRemake(RemakeName,GnrtLine,Fname,Lng){
+                print("echo @echo off>"RemakeName)
+		print("echo setlocal>>"RemakeName)
+		print("echo cd ..\\..\\..\\>>"RemakeName)
+		print("echo call gnrt " GnrtLine " >>"RemakeName)
+		print("echo call " Lng "-trnsl.bat>>"RemakeName)
+		print("echo endlocal>>"RemakeName)
+		print("echo call ..\\..\\..\\" Lng "-cp " Fname ">>"RemakeName) 
+}
+
+						###mkalldir
+(ToDo == "mkalldir"){ 
+
+	if (0 == KolVo ) KolVo=1;
 
 	if ($1 == "Z" ) {
 
         	split($0,TmpA,"@");
+                
+        	Dir[1]= StripLine(TmpA[2])  ;
+        	Dir[2]=Kav StripLine(TmpA[3]) Kav ;
+        	Dir[3]=Kav StripLine(TmpA[4]) Kav ;
 
-        	Dir1=Kav StripLine(TmpA[2]) Kav ;
-        	Dir2=Kav StripLine(TmpA[3]) Kav ;
-        	Dir3=Kav StripLine(TmpA[4]) Kav ;
+               	MkDirs(Dir);
+
         	Fname=StripLine(TmpA[5])
         	ZdList=StripLine(TmpA[6])
 
-                print("if not exist " Dir1 " mkdir " Dir1);
-                print("cd " Dir1);
+                RemakeName="remake" KolVo ".ba"
 
+                MkRemake("remake" KolVo ".ba" , "!! " ZdList , Fname , Dir[1] );
 
-                print("if not exist " Dir2 " mkdir " Dir2);
-                print("cd " Dir2);
-
-
-                print("if not exist " Dir3 " mkdir " Dir3);
-                print("cd " Dir3);
-
-                print("echo gnrt " ZdList " >remake.ba"); 
-                print("echo xx " Fname " >>remake.ba"); 
 
                 print("cd ..\\..\\..");
 
