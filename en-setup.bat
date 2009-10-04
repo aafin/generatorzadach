@@ -6,7 +6,7 @@
 :: Кол-во человек в группе по умолчанию
 :: Основная масса заданий.
 
-call tools.bat mkalldir ru 10
+call tools.bat mkalldir en 10
 
 
 

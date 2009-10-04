@@ -9,7 +9,7 @@ BEGIN {
 	Kav="\"";
 
 }
-
+						###StripLine
 function StripLine(L) {
 	sub(/^[ \t]*/,"",L);
 	sub(/[ \t]*$/,"",L);
@@ -17,8 +17,12 @@ function StripLine(L) {
 }
 
 						###MkDirs
-function MkDirs(D,i){
+function MkDirs(d1,d2,d3,D,i){
+
+	D[1]=d1; D[2]=d2 ; D[3]=d3;
+
 	for(i=1 ; i<=3 ; i++){
+		D[i]=Kav StripLine(D[i]) Kav;
                 print("if not exist " D[i] " mkdir " D[i]);
                 print("cd " D[i]);
 	}
@@ -26,14 +30,14 @@ function MkDirs(D,i){
 }
 
 						###MkRemake
-function MkRemake(RemakeName,GnrtLine,Fname,Lng){
+function MkRemake(RemakeName,GnrtLine,Flname,Lng){
                 print("echo @echo off>"RemakeName)
 		print("echo setlocal>>"RemakeName)
 		print("echo cd ..\\..\\..\\>>"RemakeName)
 		print("echo call gnrt " GnrtLine " >>"RemakeName)
 		print("echo call " Lng "-trnsl.bat>>"RemakeName)
 		print("echo endlocal>>"RemakeName)
-		print("echo call ..\\..\\..\\" Lng "-cp " Fname ">>"RemakeName) 
+		print("echo call ..\\..\\..\\" Lng "-cp " Flname ">>"RemakeName) 
 }
 
 						###mkalldir
@@ -44,19 +48,14 @@ function MkRemake(RemakeName,GnrtLine,Fname,Lng){
 	if ($1 == "Z" ) {
 
         	split($0,TmpA,"@");
-                
-        	Dir[1]= StripLine(TmpA[2])  ;
-        	Dir[2]=Kav StripLine(TmpA[3]) Kav ;
-        	Dir[3]=Kav StripLine(TmpA[4]) Kav ;
 
-               	MkDirs(Dir);
-
-        	Fname=StripLine(TmpA[5])
+        	Lengvige=StripLine(TmpA[2]);
+        	Flname=StripLine(TmpA[5])
         	ZdList=StripLine(TmpA[6])
-
                 RemakeName="remake" KolVo ".ba"
 
-                MkRemake("remake" KolVo ".ba" , "!! " ZdList , Fname , Dir[1] );
+               	MkDirs(TmpA[2],TmpA[3],TmpA[4]);
+                MkRemake(RemakeName , "!! " ZdList , Flname , Lengvige );
 
 
                 print("cd ..\\..\\..");
@@ -65,7 +64,7 @@ function MkRemake(RemakeName,GnrtLine,Fname,Lng){
 
         }
 }
-
+###
 
 
 

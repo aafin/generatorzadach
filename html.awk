@@ -241,6 +241,9 @@ BEGIN {   ###htmbegin
                         CommOfLocVar[M[3]"@"CurrNumOfLocBlok]=CommentToVar; # Коментарий к переменной
 
 		}
+		if (M[2] == ".df") { 
+			FilesNames[M[3]]=M[4];
+		}
 		Getln();    ###htm-begin20    
 	}
 
@@ -372,6 +375,11 @@ function Getln(a,M){  ###Getln
 
 /^[ \t]*\.df/ {
 	print("<em>"$3"</em>");
+	next;
+}
+
+/^[ \t]*\.f/ {
+	print("<em>"FilesNames[$2]"</em>");
 	next;
 }
 

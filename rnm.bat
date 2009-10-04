@@ -22,7 +22,7 @@ echo. >rnm.log
 set A=%1
 set B=%2
 
-for %%x in (main.txt tools.bat tools.awk) do call rnm_do.bat %%x %A% %B%
+for %%x in (main.txt tools.bat tools.awk ru-setup.bat) do call rnm_do.bat %%x %A% %B%
 ::for %%x in (main.txt gzd-lb.awk ru-zdn.bat test-lb.awk main.awk rnm.bat) do call rnm_do.bat %%x %A% %B%
 
 
