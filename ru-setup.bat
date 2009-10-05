@@ -8,7 +8,7 @@
 
 
 
-call tools.bat mkalldir ru 10
+call .\tools.bat mkalldir ru 10
 
 echo ..\tools.bat mkcard ru ¨«¥βλ > ru\mkcard.bat
 
