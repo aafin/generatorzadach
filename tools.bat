@@ -53,6 +53,7 @@ goto end
 shift
 if -%2- == -- goto err
 if not exist tools.bat cd ..
+
 for %%a in (%1 .) do for %%b in (%%a\*.ini) do echo %1 %2 %%b | gawk -f tools.awk -v ToDo=mkcard >> tmp-c.bat
 
 call tmp-c.bat

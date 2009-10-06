@@ -32,6 +32,8 @@ ru-setup.bat en-setup.bat команда начала установки
 
 .dh Создание всех кнопок
 
+.di mkalldir 
+
 Файл 
 .f tlsbat
 запущенный с параметрами
@@ -136,9 +138,13 @@ RemakeName,GnrtLine,Fname,Lng
 
 
 .di StripLine Обрезает пробелы в начале и конце строки
+.b
+.dl L
 .s StripLine
+.e
 
-.s a
+
+
 
 
 
