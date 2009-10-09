@@ -9,12 +9,21 @@ if -%1- == -- goto err
 
 :: mkalldir ru 25
 if -%1- == -mkalldir- goto mkalldir
-:: cp ru Name
-if -%1- == -cp- goto cp
 :: mkcard ru Name
 if -%1- == -mkcard- goto mkcard
+:: gnrt ???
+if -%1- == -gnrt- goto gnrt
+:: cp ru Name
+if -%1- == -cp- goto cp
 
 goto err
+
+
+::{gnrtbat}
+:gnrt
+shift
+echo ???? >xxx.tex
+goto end
 
 ::{mkalldirB}
 :mkalldir

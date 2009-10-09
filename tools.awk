@@ -33,7 +33,7 @@ function MkRemake(RemakeName,GnrtLine,Flname,Lng){
                 print("echo @echo off>"RemakeName)
 		print("echo setlocal>>"RemakeName)
 		print("echo cd ..\\..\\..\\>>"RemakeName)
-		print("echo call gnrt " GnrtLine " >>"RemakeName)
+		print("echo call .\\tools.bat gnrt " GnrtLine " >>"RemakeName)
 		print("echo call " Lng "-trnsl.bat>>"RemakeName)
 		print("echo endlocal>>"RemakeName)
 		print("echo call ..\\..\\..\\tools.bat cp " Lng " " Flname ">>"RemakeName) 
