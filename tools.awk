@@ -4,7 +4,7 @@
 ## Enc="cp866"
 ## End
 
-
+						###BEGINtools
 BEGIN {
 	Kav="\"";
 
