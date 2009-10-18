@@ -1,2 +1,83 @@
 
-asd
+
+%%tth:\begin{html}<title>Задания (generatorzadach.narod.ru)</title>\end{html}
+%%tth:\documentclass{article}
+
+%%tth:\iffalse
+
+\documentclass[a4paper,twocolumn]{article}
+
+\newcommand{\tthdump}[1]{\relax}
+
+\newcommand{\url}[1]{\mbox{\texttt{#1}}}
+
+%\usepackage{hyperref}
+\usepackage[cp1251]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+%\usepackage{exscale}
+\usepackage{amssymb}
+\usepackage{curves}
+\usepackage{epic}
+
+%%%%%%%%%%%%%%%%%%
+% неравенства и прочее
+\let\leq\leqslant
+\let\le\leqslant
+\let\geq\geqslant
+\let\ge\geqslant
+%
+
+
+\newcommand{\pags}[4]{%
+\pagestyle{plain}
+\setlength\oddsidemargin{#3} %% left
+\setlength\textwidth\paperwidth
+\addtolength\textwidth{-\oddsidemargin}
+\addtolength\textwidth{-#4} %%right
+\addtolength\oddsidemargin{-1in}
+\setlength\topmargin{-1in}
+\addtolength\topmargin{#1} %%top
+\setlength\headheight{0pt}
+\setlength\headsep{0pt}
+\setlength\textheight\paperheight
+\addtolength\textheight{-\topmargin}
+\addtolength\textheight{-1in}
+%\addtolength\textheight{-\footskip}
+\addtolength\textheight{-#2}  %%bot
+}
+
+\pags{1cm}{1cm}{1cm}{1cm}% поля по умолчанию.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Тут лежит настройка полей страницы.
+%\input{pags.tex}
+
+\pagestyle{empty}
+
+
+\newcommand{\OR}{или}
+
+% Мат режим
+\newcommand{\ls}{\(}
+\newcommand{\rs}{\)}
+%%tth:\fi
+%%tth:\newcommand{\ls}{\[}
+%%tth:\newcommand{\rs}{\]}
+
+% Чтоб вектора в html были приличные
+\let\vvec\vec
+%%tth:\let\vvec\mathbf
+
+%%tth:\let\mathbb\textbf
+%%tth:\let\odot\cdot
+
+
+
+
+\begin{document}
+
+\input{main.out}
+
+\end{document}
