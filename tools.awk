@@ -46,6 +46,10 @@ function MkClean(Fln,CN){
 		print("echo del "Fln".dvi>>"CN);
 		print("echo del "Fln".html>>"CN);
 }
+function MkEditFile(Fln,Cn){
+	print("echo start ..\\..\\..\\"Fln" >"Cn);
+}
+
 
 						###mkalldir
 (ToDo == "mkalldir"){ 
@@ -80,6 +84,7 @@ function MkClean(Fln,CN){
          MkDirs(Leng,DirNm,Tmp);
          MkRemake("remake.bat","!!!"FilNm"!!!" ,Tmp,Leng)
          MkClean(Tmp,"clean.bat");
+	 MkEditFile(FilNm,"Edit.bat");
          print("cd ..\\..\\..");
 } 
 
