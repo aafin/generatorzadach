@@ -74,10 +74,33 @@
 %%tth:\let\odot\cdot
 
 
+\newcounter{zad} \setcounter{zad}{0}
+
+\newcommand{\ZDN}[5]{
+     \vbox{%
+      \setcounter{zad}{0}%
+      \noindent%
+      \dotfill\\
+       {\small Вар.:\textbf{#1.} Группа: #3  Число/Мес./Год:  #4~ }%
+         \\[2mm]
+       Ф.И.О.:~\textit{\textbf{\large #2}}\\[-3mm]
+       \rr\\[1mm]
+      }
+}
+
+\newcommand{\rr}{\rule{1cm}{0.4pt}}
+
+
 
 
 \begin{document}
 
-\input{main.out}
+
+
+\ZDN{12}{aa}{bb}{cc}{dd}
+\ZDN{13}{aa}{bb}{cc}{dd}
+\ZDN{14}{aa}{bb}{cc}{dd}
+
+%\input{main.out}
 
 \end{document}
