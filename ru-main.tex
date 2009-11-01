@@ -85,6 +85,7 @@
          \\[2mm]
        Ф.И.О.:~\textit{\textbf{\large #2}}\\[-3mm]
        \rr\\[1mm]
+       {#5}
       }
 }
 
@@ -96,10 +97,12 @@
 \begin{document}
 
 
+\newcommand{\ZaZ}[4]{Число #2 и ответ #1}
 
-\ZDN{12}{aa}{bb}{cc}{dd}
-\ZDN{13}{aa}{bb}{cc}{dd}
-\ZDN{14}{aa}{bb}{cc}{dd}
+\ZDN{12}{aa}{bb}{cc}%
+{
+\ZaZ{1}{2}{3}{4}
+}
 
 %\input{main.out}
 
