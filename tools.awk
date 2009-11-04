@@ -66,7 +66,7 @@ function MkEditFile(Fln,Cn){
                 RemakeName="remake" KolVo ".bat"
 
                	MkDirs(TmpA[2],TmpA[3],TmpA[4]);
-                MkRemake(RemakeName , "!! " ZdList , Flname , Lengvige );
+                MkRemake(RemakeName , "A %%0 @ " ZdList , Flname , Lengvige );
                 MkClean(Flname,"clean.bat");
                 print("cd ..\\..\\..");
 
@@ -82,7 +82,7 @@ function MkEditFile(Fln,Cn){
 	 FilNm=$3;  Tmp=$3;
          sub(/^.*\\/,"",Tmp); sub(/\..*$/,"",Tmp); 
          MkDirs(Leng,DirNm,Tmp);
-         MkRemake("remake.bat","!!!"FilNm"!!!" ,Tmp,Leng)
+         MkRemake("remake.bat","F "FilNm ,Tmp,Leng)
          MkClean(Tmp,"clean.bat");
 	 MkEditFile(FilNm,"Edit.bat");
          print("cd ..\\..\\..");

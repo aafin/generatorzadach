@@ -22,8 +22,27 @@ goto err
 ::{gnrtbat}
 :gnrt
 shift
-echo ???? >xxx.tex
+
+                    
+echo. >main-o.tmp
+echo. >main-r.tmp
+
+if -%1- == -F- goto gnrtf
+
+echo %1 %2 %3 %4 %5 %6 %7 %8 | gawk -f main.awk -f lib.awk 
+
+goto arh
+
+:gnrtf 
+
+type %2 | gawk -f main.awk -f lib.awk 
+
+goto arh
+
+:arh
+type main-r.tmp >>arh-rez.dat
 goto end
+
 
 ::{mkalldirB}
 :mkalldir
@@ -33,6 +52,7 @@ if -%2- == -- goto err
 gawk -f tools.awk -v ToDo=mkalldir -v KolVo=%2 %1-ex.txt >tmp-mkdir.bat
 call tmp-mkdir.bat
 del tmp-mkdir.bat
+
 goto end
 
 ::{toolscp}
@@ -63,10 +83,11 @@ shift
 if -%2- == -- goto err
 if not exist tools.bat cd ..
 
+echo. >tmp-c.bat
 for %%a in (%1 .) do for %%b in (%%a\*.ini) do echo %1 %2 %%b | gawk -f tools.awk -v ToDo=mkcard >> tmp-c.bat
 
 call tmp-c.bat
-::del tmp-c.bat
+del tmp-c.bat
 goto end
 
 :err
